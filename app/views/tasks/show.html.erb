@@ -1,2 +1,23 @@
-<h1>Tasks#show</h1>
-<p>Find me in app/views/tasks/show.html.erb</p>
+<% provide(:title, @task.product_name) %>
+<nav class="row justify-content-end">
+<%= link_to '製品一覧', tasks_path, class: 'nav-link' %>
+  <div class="col-md-4">
+    <table class= "table table table-hover">
+      <tbody>
+        <tr><th>ID</th><td><%= @task.id %></td></tr>
+        <tr><th>品名</th><td><%= @task.product_name %></td></tr>
+        <tr><th>注番</th><td><%= @task.order_number %></td></tr>
+        <tr><th>製造日</th><td><%= @task.created_at %></td></tr>
+        <tr><th>納期</th><td><%= @task.delivery_date %></td></tr>
+        <tr><th>手配数量</th><td><%= @task.quantity %></td></tr>
+        <tr><th>作業工程</th><td><%= @task.process %></td></tr>
+        <tr><th>備考</th><td><%= @task.remarks %></td></tr>
+        <tr><th>更新日時</th><td><%= @task.updated_at %></tr>
+        <td><%= link_to "編集", edit_task_path, class: "btn btn-primary" %></td>
+        <td><%= link_to "削除", @task, method: :delete,
+                            data: { confirm: "「#{@task.product_name}」を削除します。よろしいですか？" },
+                            class: 'btn btn-danger' %></td>    
+      </tbody>
+    </table>
+  </div>
+</nav>
